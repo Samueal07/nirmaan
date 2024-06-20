@@ -7,13 +7,7 @@ const mime = require("mime-types");
 
 //const publisher = new Redis("");
 
-const s3Client = new S3Client({
-  region: "ap-south-1",
-  credentials: {
-    accessKeyId: "AKIAYWF4SSWKT6CSQ6FY",
-    secretAccessKey: "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",
-  },
-});
+// do again
 
 const PROJECT_ID = process.env.PROJECT_ID;
 
