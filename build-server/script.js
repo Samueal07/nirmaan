@@ -1,7 +1,7 @@
 const { exec } = require("child_process");
 const path = require("path");
 const fs = require("fs");
-const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
+//const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
 const mime = require("mime-types");
 //const Redis = require("ioredis");
 
