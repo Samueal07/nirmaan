@@ -1,4 +1,4 @@
-# Niramaan
+# Nirmaan
 
 Niramaan is a Vercel clone that allows you to deploy your website using a GitHub repository. It utilizes Docker, Redis, S3, ECR, and ECS for a robust and scalable deployment infrastructure.
 
