@@ -4,16 +4,17 @@ const { ECSClient, RunTaskCommand } = require("@aws-sdk/client-ecs");
 //
 const app = express();
 const PORT = 9000;
-
+const cors = require("cors");
+app.use(cors());
 //
-
 const ecsClient = new ECSClient({
-  region: "",
+  region: "ap-south-1",
   credentials: {
     accessKeyId: "",
     secretAccessKey: "",
   },
 });
+
 // s3 arn
 //ECS task arn
 const config = {

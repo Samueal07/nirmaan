@@ -7,12 +7,13 @@ const mime = require("mime-types");
 const PROJECT_ID = process.env.PROJECT_ID;
 
 const s3Client = new S3Client({
-  region: "",
+  region: "ap-south-1",
   credentials: {
     accessKeyId: "",
     secretAccessKey: "",
   },
 });
+
 async function init() {
   console.log("Executing script.js");
 

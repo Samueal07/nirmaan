@@ -1,6 +1,7 @@
 # Nirmaan
 
-Niramaan is a Vercel clone that allows you to deploy your website using a GitHub repository. It utilizes Docker, Redis, S3, ECR, and ECS for a robust and scalable deployment infrastructure.
+![alt text](image.png)
+Nirmaan allows you to deploy your website using a GitHub repository. It utilizes Docker, Redis, S3, ECR, and ECS for a robust and scalable deployment infrastructure.
 
 ## Project Structure
 
@@ -9,7 +10,10 @@ Niramaan is a Vercel clone that allows you to deploy your website using a GitHub
 This folder contains the setup for building and deploying the project.
 
 - **Dockerfile**: Sets up the environment with necessary dependencies such as Node.js and Git. It copies the required scripts and sets the entry point to `main.sh`.
+  ![alt text](a.png)
+
 - **main.sh**: Clones the GitHub repository specified by `GIT_REPOSITORY_URL` and executes `script.js`.
+
 - **script.js**: Handles the build process by running npm commands to install dependencies and build the project. It then uploads the build output to an S3 bucket.
 
 ### 2. S3 Reverse Proxy
@@ -20,9 +24,36 @@ This folder contains the reverse proxy setup to serve files from the S3 bucket.
 
 ### 3. API Server
 
+![alt text](image-1.png)
+
 This folder contains the API server that orchestrates the deployment process.
 
 - **server.js**: Sets up an Express server that listens for POST requests to create a new project. It triggers an ECS task that runs the build server container with the specified GitHub repository URL. Once the build is complete, it provides a URL to access the deployed site via the reverse proxy.
+
+### 4. Frontend
+
+This folder contains the React application for interacting with the API server.
+
+- **src/ProjectForm.js**: A React component for submitting a GitHub repository URL and optionally a slug. It sends this data to the API server and displays the deployment URL.
+- **src/App.js**: The main React component that includes `ProjectForm` and sets up the Material-UI theme for a beautiful UI.
+- **src/index.js**: The entry point for the React application.
+- **public/index.html**: The HTML file that contains a div with an id of `root`. This is where the React application is injected.
+
+#### How to Run the Frontend
+
+1. Navigate to the `frontend` directory:
+   ```bash
+   cd frontend
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the React application:
+   ```bash
+   npm start
+   ```
+4. Open your browser and go to `http://localhost:3000` to interact with the application.
 
 ## How It Works
 
@@ -31,7 +62,7 @@ This folder contains the API server that orchestrates the deployment process.
 3. **Build process**: The build server clones the repository, installs dependencies, builds the project, and uploads the output to the S3 bucket.
 4. **Serve the site**: The S3 reverse proxy serves the built site, making it accessible via a URL that includes the project slug.
 
-Niramaan integrates Docker for containerization, ECS for orchestration, S3 for storage, and a reverse proxy to serve the built websites seamlessly. This setup ensures a scalable and efficient deployment pipeline for web applications.
+Nirmaan integrates Docker for containerization, ECS for orchestration, S3 for storage, and a reverse proxy to serve the built websites seamlessly. This setup ensures a scalable and efficient deployment pipeline for web applications.
 
 ## Tech Stack
 
@@ -43,8 +74,10 @@ Niramaan integrates Docker for containerization, ECS for orchestration, S3 for s
 - **AWS ECR (Elastic Container Registry)**: Stores Docker images for deployment.
 - **http-proxy**: Middleware to handle reverse proxying of requests to the correct S3 locations.
 - **random-word-slugs**: Utility for generating unique project slugs.
+- **React**: Frontend library for building the user interface.
+- **Material-UI**: React component library for a beautiful and consistent UI design.
 
-With these technologies, Niramaan offers a comprehensive and efficient solution for deploying web applications directly from GitHub repositories.
+With these technologies, Nirmaan offers a comprehensive and efficient solution for deploying web applications directly from GitHub repositories.
 
 ## How to Clone
 
